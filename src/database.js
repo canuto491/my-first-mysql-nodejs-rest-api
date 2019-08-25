@@ -7,6 +7,13 @@ const mysqlConnection = mysql.createConnection({
     database: 'company',
 })
 
+mysqlConnection.connect(function(error){
+    if (error) {
+        console.log('database connection failed, error:', error);
+        return;
+    }
 
+    console.log('database connection successful');
+});
 
 module.exports = mysqlConnection;
