@@ -1,0 +1,27 @@
+{
+  "name": "my-first-mysql-nodejs-rest-api",
+  "version": "1.0.0",
+  "description": "my first MySQL NodeJs REST API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/canuto491/my-first-mysql-nodejs-rest-api.git"
+  },
+  "keywords": [],
+  "author": "Luis Sousa <canuto91@gmail.com>",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/canuto491/my-first-mysql-nodejs-rest-api/issues"
+  },
+  "homepage": "https://github.com/canuto491/my-first-mysql-nodejs-rest-api#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql": "^2.17.1"
+  },
+  "devDependencies": {
+
+  }
+}
