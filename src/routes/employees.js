@@ -30,4 +30,21 @@ router.get('/:id', (req, resp) => {
     });
 });
 
+router.post('/', (req, resp) => {
+    const id = null;
+    const { name, salary } = req.body;
+    // validate here
+
+    const query = "CALL save_employee(?, ?, ?);"
+    // `;
+    mysqlConnection.query(query, [id, name, salary], (errors, rows, fields) => {
+        if (errors) {
+            console.log(errors);
+            return
+        }
+
+        resp.json({status: 'Employeed Saved'});
+    });
+});
+
 module.exports = router;
