@@ -85,21 +85,21 @@ CREATE TABLE IF NOT EXISTS tasks (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(256) NOT NULL,
   `statusId` INT NOT NULL,
-  `projectsId` INT NOT NULL,
+  `projectId` INT NOT NULL,
   `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedAt` DATETIME NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `deletedAt` DATETIME NULL,
   `bDeleted` TINYINT(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   INDEX `fk_tasks_task_status_idx` (`statusId` ASC),
-  INDEX `fk_tasks_projects1_idx` (`projectsId` ASC),
+  INDEX `fk_tasks_projects1_idx` (`projectId` ASC),
   CONSTRAINT `fk_tasks_task_status`
     FOREIGN KEY (`statusId`)
     REFERENCES task_status (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_tasks_projects1`
-    FOREIGN KEY (`projectsId`)
+    FOREIGN KEY (`projectId`)
     REFERENCES projects (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
@@ -111,7 +111,7 @@ truncate table tasks;
 SET FOREIGN_KEY_CHECKS = 1;
 
 INSERT INTO `tasks`
-    (`name`, `statusId`, `projectsId`)
+    (`name`, `statusId`, `projectId`)
     VALUES
     ('Task #1 from red project', 1, 1),
     ('Task #2 from red project', 1, 1),
