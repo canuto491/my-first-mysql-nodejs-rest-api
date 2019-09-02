@@ -9,7 +9,11 @@ const mysqlConnection = mysql.createConnection({
 
 mysqlConnection.connect(function(error){
     if (error) {
-        console.log('database connection failed, error:', error);
+        console.error('database connection failed, error:', error);
+
+        if (error.code === 'ECONNREFUSED') {
+            console.error('Are you sure MySQL is running??');
+        }
         return;
     }
 
