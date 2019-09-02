@@ -69,7 +69,7 @@ router.delete('/:id', (req, resp) => {
     const { id } = req.params;
 
     const query = "DELETE FROM employees WHERE id = ?"
-    // `;
+
     mysqlConnection.query(query, [id], (errors, rows, fields) => {
         if (errors) {
             console.log(errors);
