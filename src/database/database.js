@@ -18,7 +18,7 @@ mysqlConnection.connect(function(error){
         return;
     }
 
-    console.log('database connection successful');
+    console.log('MySQL > database connection successful');
 });
 
 module.exports = mysqlConnection;
