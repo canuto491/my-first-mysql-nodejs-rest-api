@@ -1,31 +1,32 @@
-import Sequalize from "sequelize";
-import { sequelize } from "../database/db";
+import Sequelize from "sequelize";
 
-const Task = sequelize.define( 'task', {
+import sequelize from "../database/db";
+
+const Task = sequelize.define('task', {
     id: {
-        type: Sequalize.INTEGER,
+        type: Sequelize.INTEGER,
         primaryKey: true,
     },
     name: {
-        type: Sequalize.TEXT
+        type: Sequelize.TEXT
     },
     statusId: {
-        type: Sequalize.INTEGER
+        type: Sequelize.INTEGER
     },
-    projectsId: {
-        type: Sequalize.INTEGER
+    projectId: {
+        type: Sequelize.INTEGER
     },
     createdAt: {
-        type: Sequalize.DATE
+        type: Sequelize.DATE
     },
     updatedAT: {
-        type: Sequalize.DATE
+        type: Sequelize.DATE
     },
     deletedAt: {
-        type: Sequalize.DATE
+        type: Sequelize.DATE
     },
     bDeleted: {
-        type: Sequalize.BOOLEAN
+        type: Sequelize.BOOLEAN
     },
 }, {
     timestamps: false,

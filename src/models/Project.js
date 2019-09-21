@@ -1,35 +1,37 @@
-import Sequalize from "sequelize";
-import { sequelize } from "../database/db";
+import Sequelize from "sequelize";
+
+import sequelize from "../database/db";
+
 import Task from './Task';
 
-const Project = sequelize.define( 'projects', {
+const Project = sequelize.define('projects', {
     id: {
-        type: Sequalize.INTEGER,
+        type: Sequelize.INTEGER,
         primaryKey: true,
     },
     name: {
-        type: Sequalize.TEXT
+        type: Sequelize.TEXT
     },
     priority: {
-        type: Sequalize.INTEGER
+        type: Sequelize.INTEGER
     },
     description: {
-        type: Sequalize.TEXT
+        type: Sequelize.TEXT
     },
     deliveryDate: {
-        type: Sequalize.DATE
+        type: Sequelize.DATE
     },
     createdAt: {
-        type: Sequalize.DATE
+        type: Sequelize.DATE
     },
     updatedAT: {
-        type: Sequalize.DATE
+        type: Sequelize.DATE
     },
     deletedAt: {
-        type: Sequalize.DATE
+        type: Sequelize.DATE
     },
     bDeleted: {
-        type: Sequalize.BOOLEAN
+        type: Sequelize.BOOLEAN
     },
 }, {
     timestamps: false,
@@ -37,15 +39,17 @@ const Project = sequelize.define( 'projects', {
 
 Project.hasMany(Task,
     {
-        foreingKey: projectId,
-        sourceKey: id,
+        foreingKey: 'projectId',
+        sourceKey: 'id',
     }
 );
 
 Task.belongsTo(Project,
     {
-        foreingKey: projectId,
-        sourceKey: id,
+        foreingKey: 'projectId',
+        sourceKey: 'id',
     }
 );
+
+
 export default Project;
