@@ -1,27 +1,35 @@
 import Sequelize from "sequelize";
 
-var database_config = {
-    name: 'company',
-    user: '',
-    password: '',
-    properties: {
+const debugMode = false;
+
+const sequelize = new Sequelize(
+    'company', // db name,
+    'root', // username
+    '', // password
+    {
         host: 'localhost',
         dialect: 'mysql',
         pool: {
             max: 5,
             min: 0,
-            require: 30000,
-            idle: 10000,
+            acquire: 30000,
+            idle: 10000
         },
-        logging: false,
+        logging: debugMode
     }
-
-};
-
-
-export const sequelize = new Sequelize(
-    database_config.name,
-    database_config.user,
-    database_config.password,
-    database_config.properties,
 );
+
+if (debugMode) {
+    sequelize.sync({ logging: console.log });
+}
+
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log('sequelize > Connection has been established successfully.');
+  })
+  .catch(err => {
+    console.error('sequelize > Unable to connect to the database:', err);
+  });
+
+export default sequelize;
