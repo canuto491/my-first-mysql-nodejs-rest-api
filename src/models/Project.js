@@ -34,7 +34,8 @@ const Project = sequelize.define('projects', {
         type: Sequelize.BOOLEAN
     },
 }, {
-    timestamps: false,
+    timestamps: true,
+    paranoid: true,
 });
 
 Project.hasMany(Task,

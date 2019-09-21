@@ -29,7 +29,8 @@ const Task = sequelize.define('task', {
         type: Sequelize.BOOLEAN
     },
 }, {
-    timestamps: false,
+    timestamps: true,
+    paranoid: true,
 });
 
 export default Task;
