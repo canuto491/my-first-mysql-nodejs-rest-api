@@ -1,5 +1,6 @@
 const mysql = require('mysql');
 
+
 const mysqlConnection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -9,11 +10,15 @@ const mysqlConnection = mysql.createConnection({
 
 mysqlConnection.connect(function(error){
     if (error) {
-        console.log('database connection failed, error:', error);
+        console.error('database connection failed, error:', error);
+
+        if (error.code === 'ECONNREFUSED') {
+            console.error('Are you sure MySQL is running??');
+        }
         return;
     }
 
-    console.log('database connection successful');
+    console.log('MySQL > database connection successful');
 });
 
 module.exports = mysqlConnection;
