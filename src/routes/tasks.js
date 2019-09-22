@@ -1,33 +1,20 @@
 import { Router } from 'express';
 const router = Router();
 
-router.get('/', (req, resp) => {
-    console.log('get all => tasks');
-    resp.send('lista de tareas');
-});
+import { getTasks, getTask, deleteTask, updateTask, createTask, getTasksByProject} from '../controllers/task.controller'
 
-router.get('/:id', (req, resp) => {
-    const { id } = req.params;
-    console.log('get one => task with id', id);
-    resp.send('recibido');
-});
+router.get('/', getTasks);
 
-router.post('/', (req, resp) => {
-    const id = null;
-    const { name, salary } = req.body;
-    resp.send('guardando tarea', req.body);
-});
+router.get('/:id', getTask);
+
+router.post('/', createTask);
+
+router.put('/:id', updateTask);
+
+router.delete('/:id', deleteTask);
+
+router.get('/project/:projectId', getTasksByProject);
+
+export default router;
 
 
-router.put('/:id', (req, resp) => {
-    const { id } = req.params;
-    resp.send('actualizando tarea con id', {id: id, data: req.body});
-
-});
-
-router.delete('/:id', (req, resp) => {
-    const { id } = req.params;
-    resp.send('borrando tarea con id', id);
-});
-
-export default router
